@@ -24,7 +24,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import LogoSite from "../assets/logo_site.png";
-import ThemeToggle from "./theme-toggle";
+import { ModeToggle } from "./mode-toggle";
 
 // This is sample data.
 const data = {
@@ -161,7 +161,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <img src={LogoSite} alt="logo" />
-        <ThemeToggle />
+        <ModeToggle />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
