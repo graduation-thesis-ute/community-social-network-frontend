@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "@/components/theme-provider";
-import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage";
-import LoginGGPage from "./pages/Login-test-gg";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import LoginPage from "./page/login-page";
+import HomePage from "./page/home-page";
+import LoginGGPage from "./page/test-login-gg";
 
 function App() {
   return (
