@@ -12,19 +12,19 @@ import {
   SquareTerminal,
 } from "lucide-react";
 
-import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
-import { NavUser } from "@/components/nav-user";
-import { TeamSwitcher } from "@/components/team-switcher";
+import { NavMain } from "@/components/specific/dashsboard/nav-main";
+import { NavProjects } from "@/components/specific/dashsboard/nav-projects";
+import { NavUser } from "@/components/specific/dashsboard/nav-user";
+import { TeamSwitcher } from "@/components/specific/dashsboard/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar";
-import LogoSite from "../assets/logo_site.png";
-import ThemeToggle from "./theme-toggle";
+} from "@/components/layout/sidebar";
+import LogoSite from "@/assets/logo_site.png";
+import { ModeToggle } from "../ui/mode-toggle";
 
 // This is sample data.
 const data = {
@@ -161,7 +161,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <img src={LogoSite} alt="logo" />
-        <ThemeToggle />
+        <ModeToggle />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
