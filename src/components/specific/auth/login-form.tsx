@@ -13,7 +13,7 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"form">) {
-  const { data, loading, error, fetchData } = useFetch();
+  const { post, loading, error } = useFetch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -21,14 +21,15 @@ export function LoginForm({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await fetchData(`${remoteUrl}/api/v1/auth/login`, "POST", {
-        email,
+      const response = await post("/api/v1/auth/login", {
+        username: email,
         password,
       });
-      console.log("Get data result: ", data);
-      if (data.status === "success") {
-        localStorage.setItem("accessToken", data.accessToken);
-        localStorage.setItem("refreshToken", data.refreshToken);
+
+      console.log("Get data result: ", response);
+      if (response.status === "success") {
+        localStorage.setItem("accessToken", response.data.accessToken);
+        localStorage.setItem("refreshToken", response.data.refreshToken);
         navigate("/");
       } else {
         return;
@@ -83,7 +84,7 @@ export function LoginForm({
         <Button type="submit" className="w-full" disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </Button>
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-red-500">{error.message}</p>}
         <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
           <span className="relative z-10 bg-background px-2 text-muted-foreground">
             Or continue with
