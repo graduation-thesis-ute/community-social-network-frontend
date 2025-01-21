@@ -3,12 +3,17 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import LoginPage from "./page/login-page";
 import HomePage from "./page/home-page";
 import LoginGGPage from "./page/test-login-gg";
+import { Provider } from "react-redux";
+import store from "./store";
+import Auth from "./components/specific/auth/auth-redux";
 
 function App() {
   return (
-    <ThemeProvider>
-      <AppRoutes />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider>
+        <AppRoutes />
+      </ThemeProvider>
+    </Provider>
   );
 }
 function AppRoutes() {
@@ -18,6 +23,7 @@ function AppRoutes() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/login-gg" element={<LoginGGPage />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </BrowserRouter>
   );
